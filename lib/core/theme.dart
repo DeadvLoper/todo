@@ -9,6 +9,6 @@ class AppTheme {
 
 Color fromHex(String hex) {
   hex = hex.replaceAll('#', '');
-  hex += '0x';
-  return Color(int.parse(hex));
+  hex = 'FF$hex';
+  return Color(int.parse(hex,radix: 16));
 }

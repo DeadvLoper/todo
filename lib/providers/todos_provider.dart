@@ -33,6 +33,21 @@ class TodosState extends State<TodosProvider> {
     }
   }
 
+  Future<void> addTodo(Todo todo) async {
+    try {
+      setState(() {
+        todoState = LoadingState();
+      });
+      await widget.repository.addTodo(todo);
+      final List<Todo> todos = await widget.repository.getTodos();
+      setState(() {
+        todoState = DataState(value: todos);
+      });
+    } catch (e, s) {
+      print(s);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return _InheritedWidget(state: this, child: widget.child);
@@ -45,6 +60,7 @@ class _InheritedWidget extends InheritedWidget {
 
   @override
   bool updateShouldNotify(_InheritedWidget old) {
-    return old.state.todoState != state.todoState;
+    // return old.state.todoState != state.todoState;
+    return true;
   }
 }
