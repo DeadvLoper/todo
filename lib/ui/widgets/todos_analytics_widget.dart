@@ -79,7 +79,8 @@ class TodosAnalyticsWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          if (total != null) AnimatedProgressBar(progress: value / total),
+          if (total != null)
+            AnimatedProgressBar(progress: value != 0 ? value / total : 0),
         ],
       ),
     );

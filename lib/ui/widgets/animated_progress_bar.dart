@@ -33,7 +33,6 @@ class ProgressBarState extends State<AnimatedProgressBar>
   @override
   Widget build(BuildContext context) {
     return Container(
-      constraints: BoxConstraints(maxHeight: 4, maxWidth: 120),
       decoration: BoxDecoration(
         color: AppTheme.shadowColor,
         borderRadius: BorderRadius.circular(15),
