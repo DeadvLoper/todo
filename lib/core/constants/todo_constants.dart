@@ -1,7 +1,8 @@
 // Todo json constants
-const String id = "ID";
-const String title = "TITLE";
-const String body = "BODY";
-const String priority = "PRIORITY";
-const String time = "CREATED_AT";
+const String kid = "ID";
+const String ktitle = "TITLE";
+const String kbody = "BODY";
+const String kpriority = "PRIORITY";
+const String ktime = "CREATED_AT";
+const String kcompleted = "IS_COMPLETED";
 //

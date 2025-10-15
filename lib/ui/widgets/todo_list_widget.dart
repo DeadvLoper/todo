@@ -13,8 +13,12 @@ class TodoListWidget extends StatelessWidget {
 
     return switch (state) {
       DataState(:final value) => ListView.builder(
+        padding: EdgeInsets.all(8),
         itemCount: value.length,
-        itemBuilder: (ctx, index) => TodoWidget(todo: value[index]),
+        itemBuilder: (ctx, index) => Padding(
+          padding: const EdgeInsets.only(bottom: 8.0),
+          child: TodoWidget(todo: value[index]),
+        ),
       ),
       ErrorState() => Text("An Error occurred!"),
       LoadingState() => Center(child: CircularProgressIndicator()),

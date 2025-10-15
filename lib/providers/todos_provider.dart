@@ -43,9 +43,43 @@ class TodosState extends State<TodosProvider> {
       setState(() {
         todoState = DataState(value: todos);
       });
-    } catch (e, s) {
-      print(s);
+    } catch (e) {
+      rethrow;
     }
+  }
+
+  Future<void> completeTodo(int id) async {
+    try {
+      await widget.repository.completeTodo(id);
+      List<Todo> todos = List.from(
+        todoState != null ? todoState!.data ?? [] : [],
+      );
+      todos = todos.map((todo) {
+        if (todo.id == id) {
+          return Todo(
+            id: id,
+            title: todo.title,
+            body: todo.body,
+            priority: todo.priority,
+            createdAt: todo.createdAt,
+            isCompleted: todo.isCompleted ? false : true,
+          );
+        }
+        return todo;
+      }).toList();
+
+      setState(() {
+        todoState = DataState(value: todos);
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  @override
+  void initState() {
+    getTodos();
+    super.initState();
   }
 
   @override

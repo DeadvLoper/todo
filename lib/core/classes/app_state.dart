@@ -1,10 +1,17 @@
-sealed class AppState<T> {}
-
-class DataState<T> implements AppState<T> {
-  final T value;
-  const DataState({required this.value});
+sealed class AppState<T> {
+  final T? data;
+  const AppState(this.data);
 }
 
-class ErrorState<T> implements AppState<T> {}
+class DataState<T> extends AppState<T> {
+  final T value;
+  const DataState({required this.value}) : super(value);
+}
 
-class LoadingState<T> implements AppState<T> {}
+class ErrorState<T> extends AppState<T> {
+  const ErrorState() : super(null);
+}
+
+class LoadingState<T> extends AppState<T> {
+  const LoadingState() : super(null);
+}

@@ -25,14 +25,13 @@ class DropDownState extends State<CustomDropdownWidget> {
       constraints: BoxConstraints(minWidth: 150),
       decoration: BoxDecoration(
         border: Border.all(),
-        color: AppTheme.onSecondaryLight,
         borderRadius: BorderRadius.circular(15),
       ),
       child: DropdownButton<String>(
         underline: SizedBox(),
         icon: Icon(Icons.priority_high_sharp),
-        dropdownColor: AppTheme.onSecondaryLight,
-        style: TextStyle(color: AppTheme.onPrimaryLight),
+      
+        style: TextStyle(),
         borderRadius: BorderRadius.circular(15),
         value: items.first,
         items: items
@@ -41,7 +40,7 @@ class DropDownState extends State<CustomDropdownWidget> {
                 value: item,
                 child: Text(
                   item.toUpperCase(),
-                  style: TextStyle(color: AppTheme.secondaryColorLight),
+                  style: TextStyle(),
                 ),
               ),
             )

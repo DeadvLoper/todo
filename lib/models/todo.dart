@@ -6,6 +6,7 @@ class Todo {
   final String body;
   final Priority priority;
   final DateTime createdAt;
+  final bool isCompleted;
 
   const Todo({
     required this.id,
@@ -13,6 +14,7 @@ class Todo {
     required this.body,
     required this.priority,
     required this.createdAt,
+    required this.isCompleted,
   });
 }
 
@@ -23,28 +25,31 @@ class TodoModel extends Todo {
     required super.body,
     required super.priority,
     required super.createdAt,
+    required super.isCompleted,
   });
 
   factory TodoModel.fromJson(Map<String, dynamic> json) {
     final Priority priority_ = Priority.values.firstWhere(
-      (pri) => pri.name == json[priority],
+      (priority) => priority.name == json[kpriority],
     );
     return TodoModel(
-      id: json[id],
-      title: json[title],
-      body: json[body],
+      id: json[kid],
+      title: json[ktitle],
+      body: json[kbody],
       priority: priority_,
-      createdAt: DateTime.parse(json[time]),
+      createdAt: DateTime.parse(json[ktime]),
+      isCompleted: json[kcompleted] == 1 ? true : false,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      id: this.id,
-      title: this.title,
-      body: this.body,
-      priority: this.priority.name,
-      time: createdAt.toString(),
+      kid: id,
+      ktitle: title,
+      kbody: body,
+      kpriority: priority.name,
+      ktime: createdAt.toString(),
+      kcompleted: isCompleted,
     };
   }
 }

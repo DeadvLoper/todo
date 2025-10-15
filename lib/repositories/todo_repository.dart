@@ -4,6 +4,7 @@ import 'package:cookbook/services/todo_service.dart';
 abstract class TodoRepository {
   Future<List<Todo>> getTodos();
   Future<void> addTodo(Todo todo);
+  Future<void> completeTodo(int id);
 }
 
 class TodoRepositoryImpl implements TodoRepository {
@@ -17,5 +18,11 @@ class TodoRepositoryImpl implements TodoRepository {
   Future<void> addTodo(Todo todo) async {
     final LocalTodoService localTodoService = LocalTodoServiceImpl();
     await localTodoService.addTodo(todo);
+  }
+
+  @override
+  Future<void> completeTodo(int id) async {
+    final LocalTodoService localTodoService = LocalTodoServiceImpl();
+    await localTodoService.completeTodo(id);
   }
 }
