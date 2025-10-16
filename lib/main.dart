@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    MaterialApp(
-      theme: AppTheme.theme,
-      home: TodosProvider(repository: TodoRepositoryImpl(), child: TodosPage()),
+    TodosProvider(
+      repository: TodoRepositoryImpl(),
+      child: MaterialApp(theme: AppTheme.theme, home: TodosPage()),
     ),
   );
 }

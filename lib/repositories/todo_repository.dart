@@ -5,6 +5,7 @@ abstract class TodoRepository {
   Future<List<Todo>> getTodos();
   Future<void> addTodo(Todo todo);
   Future<void> completeTodo(int id);
+  Future<void> deleteTodo(int id);
 }
 
 class TodoRepositoryImpl implements TodoRepository {
@@ -24,5 +25,11 @@ class TodoRepositoryImpl implements TodoRepository {
   Future<void> completeTodo(int id) async {
     final LocalTodoService localTodoService = LocalTodoServiceImpl();
     await localTodoService.completeTodo(id);
+  }
+
+  @override
+  Future<void> deleteTodo(int id) async {
+    final LocalTodoService localTodoService = LocalTodoServiceImpl();
+    await localTodoService.deleteTodo(id);
   }
 }

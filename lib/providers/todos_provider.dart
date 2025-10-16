@@ -39,7 +39,12 @@ class TodosState extends State<TodosProvider> {
         todoState = LoadingState();
       });
       await widget.repository.addTodo(todo);
-      final List<Todo> todos = await widget.repository.getTodos();
+      final List<Todo> todos = todoState != null
+          ? todoState!.data != null
+                ? todoState!.data!
+                : []
+          : [];
+      todos.insert(0, todo);
       setState(() {
         todoState = DataState(value: todos);
       });
@@ -70,6 +75,20 @@ class TodosState extends State<TodosProvider> {
 
       setState(() {
         todoState = DataState(value: todos);
+      });
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> deleteTodo(int id) async {
+    try {
+      await widget.repository.deleteTodo(id);
+
+      setState(() {
+        todoState = DataState(
+          value: [...todoState!.data!.where((todo) => todo.id != id)],
+        );
       });
     } catch (e) {
       rethrow;

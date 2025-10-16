@@ -14,7 +14,7 @@ class TodosAnalyticsWidget extends StatelessWidget {
     final List<Todo> todos = state == null ? [] : state.data ?? [];
     return Container(
       decoration: BoxDecoration(
-        color: AppTheme.surfaceColorLight,
+      color: AppTheme.surfaceColorLight,
         border: Border.all(color: AppTheme.primaryColor, width: 4),
         borderRadius: BorderRadius.circular(15),
       ),

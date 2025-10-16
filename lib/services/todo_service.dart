@@ -6,6 +6,7 @@ abstract class LocalTodoService {
   Future<List<Todo>> fetchTodos();
   Future<void> addTodo(Todo todo);
   Future<void> completeTodo(int id);
+  Future<void> deleteTodo(int id);
 }
 
 class LocalTodoServiceImpl implements LocalTodoService {
@@ -53,6 +54,13 @@ class LocalTodoServiceImpl implements LocalTodoService {
   Future<void> completeTodo(int id) async {
     final Database db = await openDb();
     await db.execute('UPDATE TODOS SET IS_COMPLETED = TRUE WHERE ID = $id');
+    await db.close();
+  }
+
+  @override
+  Future<void> deleteTodo(int id) async {
+    final Database db = await openDb();
+    await db.execute('DELETE FROM TODOS WHERE ID = $id');
     await db.close();
   }
 }

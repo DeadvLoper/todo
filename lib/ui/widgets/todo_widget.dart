@@ -13,28 +13,23 @@ class TodoWidget extends StatelessWidget {
     return AnimatedOpacityWidget(
       child: Dismissible(
         key: ValueKey(todo.id),
-        onDismissed: (d) {},
+        onDismissed: (d) {
+          TodosProvider.of(context).deleteTodo(todo.id);
+        },
         child: Container(
           padding: EdgeInsets.all(15),
           decoration: BoxDecoration(
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(color: AppTheme.shadowColor, blurRadius: 10),
-            ],
+            boxShadow: [BoxShadow(color: AppTheme.shadowColor, blurRadius: 10)],
             borderRadius: BorderRadius.circular(15),
           ),
-          child: InkWell(
-            onTap: () {
-              TodosProvider.of(context).completeTodo(todo.id);
-            },
-            child: _buildRow(todo),
-          ),
+          child: _buildRow(todo, context),
         ),
       ),
     );
   }
 
-  Widget _buildRow(Todo todo) {
+  Widget _buildRow(Todo todo, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -63,13 +58,18 @@ class TodoWidget extends StatelessWidget {
             ),
           ],
         ),
-        Icon(
-          todo.isCompleted
-              ? Icons.radio_button_checked
-              : Icons.radio_button_off_outlined,
-          color: AppTheme.primaryColor,
+        GestureDetector(
+          onTap: () {
+            TodosProvider.of(context).completeTodo(todo.id);
+          },
+          child: Icon(
+            todo.isCompleted
+                ? Icons.radio_button_checked
+                : Icons.radio_button_off_outlined,
+            color: AppTheme.primaryColor,
 
-          size: 33,
+            size: 33,
+          ),
         ),
       ],
     );
