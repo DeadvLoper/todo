@@ -1,5 +1,5 @@
-import 'package:cookbook/models/todo.dart';
-import 'package:cookbook/services/todo_service.dart';
+import 'package:todo/models/todo.dart';
+import 'package:todo/services/todo_service.dart';
 
 abstract class TodoRepository {
   Future<List<Todo>> getTodos();

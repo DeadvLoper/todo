@@ -1,4 +1,4 @@
-import 'package:cookbook/core/theme.dart';
+import 'package:todo/core/theme.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedProgressBar extends StatefulWidget {

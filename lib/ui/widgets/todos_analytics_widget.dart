@@ -1,8 +1,8 @@
-import 'package:cookbook/core/classes/app_state.dart';
-import 'package:cookbook/core/theme.dart';
-import 'package:cookbook/models/todo.dart';
-import 'package:cookbook/providers/todos_provider.dart';
-import 'package:cookbook/ui/widgets/animated_progress_bar.dart';
+import 'package:todo/core/classes/app_state.dart';
+import 'package:todo/core/theme.dart';
+import 'package:todo/models/todo.dart';
+import 'package:todo/providers/todos_provider.dart';
+import 'package:todo/ui/widgets/animated_progress_bar.dart';
 import 'package:flutter/material.dart';
 
 class TodosAnalyticsWidget extends StatelessWidget {

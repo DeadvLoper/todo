@@ -1,6 +1,6 @@
-import 'package:cookbook/core/classes/app_state.dart';
-import 'package:cookbook/models/todo.dart';
-import 'package:cookbook/repositories/todo_repository.dart';
+import 'package:todo/core/classes/app_state.dart';
+import 'package:todo/models/todo.dart';
+import 'package:todo/repositories/todo_repository.dart';
 import 'package:flutter/material.dart';
 
 class TodosProvider extends StatefulWidget {
@@ -35,21 +35,31 @@ class TodosState extends State<TodosProvider> {
 
   Future<void> addTodo(Todo todo) async {
     try {
-      setState(() {
-        todoState = LoadingState();
-      });
-      await widget.repository.addTodo(todo);
-      final List<Todo> todos = todoState != null
-          ? todoState!.data != null
-                ? todoState!.data!
-                : []
-          : [];
-      todos.insert(0, todo);
-      setState(() {
-        todoState = DataState(value: todos);
-      });
+    final List<Todo> todos = todoState != null
+        ? todoState!.data != null
+              ? todoState!.data!
+              : []
+        : [];
+    todos.insert(
+      0,
+      TodoModel(
+        id: todo.id,
+        title: todo.title,
+        body: todo.body,
+        priority: todo.priority,
+        createdAt: todo.createdAt,
+        isCompleted: todo.isCompleted,
+      ),
+    );
+    setState(() {
+      todoState = LoadingState();
+    });
+    await widget.repository.addTodo(todo);
+    setState(() {
+      todoState = DataState(value: todos);
+    });
     } catch (e) {
-      rethrow;
+    rethrow;
     }
   }
 

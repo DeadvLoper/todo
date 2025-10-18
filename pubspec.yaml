@@ -1,5 +1,5 @@
-name: cookbook
-description: "A new Flutter project."
+name: todo 
+description: "A todo app built with flutter"
 
 publish_to: 'none' 
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:cookbook/core/theme.dart';
-import 'package:cookbook/ui/widgets/add_todo_widget.dart';
-import 'package:cookbook/ui/widgets/todo_list_widget.dart';
-import 'package:cookbook/ui/widgets/todos_analytics_widget.dart';
+import 'package:todo/core/theme.dart';
+import 'package:todo/ui/widgets/add_todo_widget.dart';
+import 'package:todo/ui/widgets/todo_list_widget.dart';
+import 'package:todo/ui/widgets/todos_analytics_widget.dart';
 
 class TodosPage extends StatefulWidget {
   const TodosPage() : super(key: null);

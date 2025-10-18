@@ -1,4 +1,4 @@
-import 'package:cookbook/core/constants/todo_constants.dart';
+import 'package:todo/core/constants/todo_constants.dart';
 
 class Todo {
   final int id;

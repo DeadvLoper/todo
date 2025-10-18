@@ -1,9 +1,8 @@
-import 'package:cookbook/core/classes/app_state.dart';
-import 'package:cookbook/core/theme.dart';
-import 'package:cookbook/models/todo.dart';
-import 'package:cookbook/providers/todos_provider.dart';
-import 'package:cookbook/ui/widgets/animated_flip_widget.dart';
-import 'package:cookbook/ui/widgets/todo_widget.dart';
+import 'package:todo/core/classes/app_state.dart';
+import 'package:todo/core/theme.dart';
+import 'package:todo/models/todo.dart';
+import 'package:todo/providers/todos_provider.dart';
+import 'package:todo/ui/widgets/todo_widget.dart';
 import 'package:flutter/material.dart';
 
 class TodoListWidget extends StatelessWidget {
@@ -49,7 +48,7 @@ class TodoListWidget extends StatelessWidget {
       itemCount: todos.length,
       itemBuilder: (ctx, index) => Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
-        child: AnimatedFlipWidget(child: TodoWidget(todo: todos[index])),
+        child: TodoWidget(todo: todos[index]),
       ),
     );
   }

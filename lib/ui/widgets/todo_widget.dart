@@ -1,7 +1,7 @@
-import 'package:cookbook/core/theme.dart';
-import 'package:cookbook/models/todo.dart';
-import 'package:cookbook/providers/todos_provider.dart';
-import 'package:cookbook/ui/widgets/animated_opacity_widget.dart';
+import 'package:todo/core/theme.dart';
+import 'package:todo/models/todo.dart';
+import 'package:todo/providers/todos_provider.dart';
+import 'package:todo/ui/widgets/animated_opacity_widget.dart';
 import 'package:flutter/material.dart';
 
 class TodoWidget extends StatelessWidget {

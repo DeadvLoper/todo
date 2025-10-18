@@ -39,13 +39,10 @@ class AnimatedOpacityWidgetState extends State<AnimatedOpacityWidget>
       animation: animationController!.view,
       child: child,
       builder: (ctx, child) {
-        return AnimatedOpacity(
-          opacity: animationController!.value,
-          duration: const Duration(milliseconds: 500),
-          child: Transform.scale(
-            scaleX: animationController!.value,
+        return  AnimatedOpacity(
+            opacity: animationController!.value,
+            duration: const Duration(milliseconds: 300),
             child: child,
-          ),
         );
       },
     );
